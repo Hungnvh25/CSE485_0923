@@ -40,21 +40,18 @@
 
         <?php
             // Kết nối đến cơ sở dữ liệu
-            $servername = "localhost";
-            $database = "BTTH01_CSE485";
-            $username = "root";
-            $password = "Qqfkg2003@";
-            $conn = mysqli_connect($servername, $username, $password, $database);
+            $conn = new PDO("mysql:host = localhost;dbname=BTTH01_CSE485", "root", "Qqfkg2003@");
                                                     
-            // Kiểm tra kết nối
-            if (!$conn) {
-                die("Kết nối đến cơ sở dữ liệu thất bại: " . mysqli_connect_error());
-            }
+
+
             if(isset($_GET['mabv'])){
                 $mabv = $_GET['mabv'];
                 $sql = "select * from  baiviet join theloai on baiviet.ma_tloai = theloai.ma_tloai join tagia on tagia.ma_tgia = baiviet.ma_tgia where ma_bviet = $mabv;";
-                $list = mysqli_query($conn,$sql);
-                $row = mysqli_fetch_assoc($list);
+                $list_sql = $conn->prepare($sql);
+                $list_sql->execute();
+                $row = $list_sql->fetch(PDO::FETCH_ASSOC);
+
+
                 $ten_bhat = $row['ten_bhat'];
                 $ten_tloai = $row['ten_tloai'];
                 $tomtat = $row['tomtat'];

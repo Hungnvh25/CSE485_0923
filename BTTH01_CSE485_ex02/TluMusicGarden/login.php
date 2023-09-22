@@ -37,20 +37,18 @@
             </div>
             <?php
                 // Kết nối đến cơ sở dữ liệu
-                $servername = "localhost";
-                $database = "BTTH01_CSE485";
-                $username = "root";
-                $password = "Qqfkg2003@";
-                $conn = mysqli_connect($servername, $username, $password, $database);
-                                                        
-                // Kiểm tra kết nối
-                if (!$conn) {
-                    die("Kết nối đến cơ sở dữ liệu thất bại: " . mysqli_connect_error());
+                $conn = new PDO("mysql:host = localhost;dbname=BTTH01_CSE485", "root", "Qqfkg2003@");
+                $sql = "select * from users ;";                
+                $list_sql = $conn->prepare($sql);
+                $list_sql->execute();
+
+                $row = $list_sql->fetch(PDO::FETCH_ASSOC);
+                
+                if(isset($GET_['error'])){
+                    echo "Tài khoản hoặc mật khẩu không chính xác";
                 }
+                                                  
 
-                $sql = "select * from users ;";
-
-                $list = mysqli_query($conn,$sql);
             ?>
             
         </div>
@@ -72,6 +70,28 @@
                             </div>
                         </div>
             <?php
+                if(isset($_POST['name'])&isset($_POST['password'])){
+                    $name = $_POST['name'];
+                   
+                    $passwordd = $_POST['password'];
+                    $sql = "select * from users where username = '$name' and pass = '$passwordd' ;";                
+                    $list_sql = $conn->prepare($sql);
+                    $list_sql->execute();
+                    
+
+                   
+                 
+                    if($list_sql->rowCount()>0){
+                        header('location:Admin.php');
+                    }
+                    else{
+                        echo "<p class='text-center'>Tài khoản hoặc mật khẩu không chính xác</p>";
+                    }
+                    
+                }
+
+
+
                 
             ?>           
 

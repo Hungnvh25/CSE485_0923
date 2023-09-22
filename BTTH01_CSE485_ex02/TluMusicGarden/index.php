@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row justify-content-between mt-3">
             
-
+                <!-- Thanh menu -->
             <div class="haha d-inline col-md-5">
                 <ul class="nav">
                     <li>
@@ -25,11 +25,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="login.php">Đăng Nhập</a>
                     </li>
-
                 </ul>
             </div>
-
-
+                <!-- -- -->
+                <!-- Tim kiem -->
             <div class="searchh d-inline col-md-3 mr-5">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Nội dung cần tìm.." aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -43,38 +42,29 @@
         <h2 class="text-center text-primary" >Top bài hát yêu thích</h2>
         <?php
             // Kết nối đến cơ sở dữ liệu
-            $servername = "localhost";
-            $database = "BTTH01_CSE485";
-            $username = "root";
-            $password = "Qqfkg2003@";
-            $conn = mysqli_connect($servername, $username, $password, $database);
+
+            $conn = new PDO("mysql:host = localhost;dbname=BTTH01_CSE485", "root", "Qqfkg2003@");
                                                     
-            // Kiểm tra kết nối
-            if (!$conn) {
-                die("Kết nối đến cơ sở dữ liệu thất bại: " . mysqli_connect_error());
-            }
 
             $sql = "select * from tagia join baiviet on tagia.ma_tgia = baiviet.ma_tgia;";
+            $list_sql = $conn->prepare($sql);
+            $list_sql->execute();
 
-            $list = mysqli_query($conn,$sql);
-        ?>
-            <div class="container">
-                <div class="row">
+            
 
-                    <?php
-                    while($row = mysqli_fetch_assoc($list))
+            // sử lý kết quả
+            //$users = $stmt->fetchAll();
+                    while($row = $list_sql->fetch())
                     {
                         ?>
                                 <div class="baihat col-md-3 d-inline">
-                                    <img src="../img/<?= $row['hinh_tgia'] ?>" alt="">
-                                    <a href="detail.php?mabv=<?=$row['ma_bviet']?>"><p class="text-center" ><?= $row['ten_bhat']?></p></a>
+                                    <img src="../img/<?= $row[2] ?>" alt="">
+                                    <a href="detail.php?mabv=<?=$row[3]?>"><p class="text-center" ><?= $row[5]?></p></a>
                                 </div>
 
                         <?php
                     }
                     ?>
-                </div>
-            </div>
         <?php
         ?>
         
