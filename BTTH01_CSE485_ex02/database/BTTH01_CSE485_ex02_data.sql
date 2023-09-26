@@ -14,6 +14,7 @@ create table theloai(
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(30) NOT NULL,
+<<<<<<< HEAD
     email varchar(50) NOT NULL,
     pass VARCHAR(255) NOT NULL
 );
@@ -22,6 +23,15 @@ CREATE TABLE users (
 INSERT INTO users (username,email, pass) VALUES
 ('admin','nguyenvanhung@gmail.com', '000'),
 ('hung','nguyenvanfung@gmail.com', 'hung12');
+=======
+    pass VARCHAR(20) NOT NULL
+);
+
+
+INSERT INTO users (username, pass) VALUES
+('admin', '000'),
+('hung', 'hung12');
+>>>>>>> a2da7cd4c97a5945d0ad18fc6d405bd03162cc60
 
 
 select * from tagia join baiviet on tagia.ma_tgia = baiviet.ma_tgia;
@@ -66,6 +76,7 @@ INSERT INTO baiviet ( tieude, ten_bhat, ma_tloai, tomtat, noidung, ma_tgia, hinh
 ( 'Bài viết về bài hát C', 'C', 2, 'Bài hát C thuộc thể loại pop.', 'Nội dung bài viết về bài hát C.', 1, 'hinh_baiviet_3.jpg');
 
 select * from tagia join baiviet on tagia.ma_tgia = baiviet.ma_tgia;
+<<<<<<< HEAD
 
 select * from  baiviet join theloai on baiviet.ma_tloai = theloai.ma_tloai join tagia on tagia.ma_tgia = baiviet.ma_tgia where ma_bviet = 2;
 
@@ -73,6 +84,12 @@ select * from users where usersname = 'admin' and pass = '000';
 UPDATE theloai SET  ten_tloai = 'Ten the loai moi' WHERE ma_tloai = 1;
 
 DELETE FROM theloai WHERE ma_tloai = 5;
+=======
+>>>>>>> a2da7cd4c97a5945d0ad18fc6d405bd03162cc60
 
+select * from  baiviet join theloai on baiviet.ma_tloai = theloai.ma_tloai join tagia on tagia.ma_tgia = baiviet.ma_tgia where ma_bviet = 2;
 
+select * from users where usersname = 'admin' and pass = '000';
+UPDATE theloai SET  ten_tloai = 'Ten the loai moi' WHERE ma_tloai = 1;
 
+DELETE FROM theloai WHERE ma_tloai = 5;
