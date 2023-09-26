@@ -14,9 +14,29 @@
         <div class="row justify-content-between mt-3">
             
 
-        <?php
-            include "head.php"
-        ?>
+            <div class="haha d-inline col-md-5">
+                <ul class="nav">
+                    <li>
+                        <img style="height: 100px;" src="../img/logo.jpg" alt="">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Đăng Nhập</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div class="searchh d-inline col-md-3 mr-5">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Nội dung cần tìm.." aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Tìm</button>
+            </div>
+            
+        </div>
 
         <?php
             // Kết nối đến cơ sở dữ liệu
@@ -93,9 +113,13 @@
 
 
 
-        <?php
-            include "floor.php"
-        ?>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12 floor">
+                <h3 class="text-center bg-secondary p-3" > TLU'S MUSIC GARDEN</h3>
+            </div>
+            </div>
+        </div>
 
     </div>
 
