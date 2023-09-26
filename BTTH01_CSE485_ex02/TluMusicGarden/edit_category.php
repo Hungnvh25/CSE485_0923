@@ -13,6 +13,8 @@
     <div class="container-fluid">
         <div class="row justify-content-between mt-3">
             
+            
+
                 <!-- Thanh menu -->
             <div class="haha d-inline col-md-7">
                 <ul class="nav">
@@ -99,13 +101,9 @@
 
 
 
-        <div class="container-fluid">
-            <div class="row">
-            <div class="col-md-12 floor">
-                <h3 class="text-center bg-secondary p-3" > TLU'S MUSIC GARDEN</h3>
-            </div>
-            </div>
-        </div>
+        <?php
+            include "floor.php"
+        ?>
 
     </div>
 

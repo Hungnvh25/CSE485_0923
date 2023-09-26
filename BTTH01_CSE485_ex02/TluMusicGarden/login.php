@@ -10,46 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
 <body>
+
     <div class="container-fluid">
-        <div class="row justify-content-between mt-3">
-            
+        <?php
+            include "head.php"
+        ?>
 
-            <div class="haha d-inline col-md-5">
-                <ul class="nav">
-                    <li>
-                        <img style="height: 100px;" src="../img/logo.jpg" alt="">
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Đăng Nhập</a>
-                    </li>
-
-                </ul>
-            </div>
-
-
-            <div class="searchh d-inline col-md-3 mr-5">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Nội dung cần tìm.." aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Tìm</button>
-            </div>
-            <?php
-                // Kết nối đến cơ sở dữ liệu
-                $conn = new PDO("mysql:host = localhost;dbname=BTTH01_CSE485", "root", "Qqfkg2003@");
-                $sql = "select * from users ;";                
-                $list_sql = $conn->prepare($sql);
-                $list_sql->execute();
-
-                $row = $list_sql->fetch(PDO::FETCH_ASSOC);
-                
-                if(isset($GET_['error'])){
-                    echo "Tài khoản hoặc mật khẩu không chính xác";
-                }
-                                                  
-
-            ?>
             
         </div>
                         <div class="container">
@@ -65,44 +31,61 @@
                                         <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu">
                                         </div>
                                         <button type="submit" class="btn btn-warning mt-2">Login</button>
+                                        <a class="btn btn-warning mt-2" href="Add_user.php">Tạo mới</a>
                                     </form>
                                 </div>
                             </div>
                         </div>
             <?php
-                if(isset($_POST['name'])&isset($_POST['password'])){
+                
+                if(isset($_POST['name'])&isset($_POST['password'])){ 
                     $name = $_POST['name'];
-                   
-                    $passwordd = $_POST['password'];
-                    $sql = "select * from users where username = '$name' and pass = '$passwordd' ;";                
+                    $pass = $_POST['password'];
+
+                    echo 'day';
+                    // Kết nối đến cơ sở dữ liệu
+                    $conn = new PDO("mysql:host = localhost;dbname=BTTH01_CSE485", "root", "Qqfkg2003@");
+
+
+                    $sql = "select * from users where email = '$name' or username = '$name';";                
                     $list_sql = $conn->prepare($sql);
                     $list_sql->execute();
+                    $row = $list_sql->fetch(PDO::FETCH_ASSOC);
                     
-
-                   
-                 
                     if($list_sql->rowCount()>0){
-                        header('location:Admin.php');
-                    }
-                    else{
-                        echo "<p class='text-center'>Tài khoản hoặc mật khẩu không chính xác</p>";
-                    }
-                    
-                }
+                       
+                        $pass_hasd = $row['pass'];
+                        if(password_verify($pass,$pass_hasd)){
+                            
+                            session_start();
+                            $_SESSION['Login'] = $name;
+                            header('location:Admin.php');
 
+                        }
+                        else{
+                            header('location:login.php?error=TK&Mk');
+                        }
 
+                    }
 
                 
-            ?>           
+                    
+                }
+                if(isset($_GET['error'])){
+                    echo "<p class='text-center'>Tài khoản hoặc mật khẩu không chính xác</p>";
+                }
+                else if(isset($_GET['tt'])){
+                    echo "<p class='text-center'>Tạo tài khoản thành công</p>";
+                }
+
+                
+            ?>
+           
 
 
-        <div class="container">
-            <div class="row">
-            <div class="col-md-12 floor">
-                <h3 class="text-center bg-secondary p-3" > TLU'S MUSIC GARDEN</h3>
-            </div>
-            </div>
-        </div>
+        <?php
+            include "floor.php"
+        ?>
 
     </div>
 

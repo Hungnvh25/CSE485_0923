@@ -11,31 +11,11 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row justify-content-between mt-3">
-            
-                <!-- Thanh menu -->
-            <div class="haha d-inline col-md-5">
-                <ul class="nav">
-                    <li>
-                        <img style="height: 100px;" src="../img/logo.jpg" alt="">
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Đăng Nhập</a>
-                    </li>
-                </ul>
-            </div>
-                <!-- -- -->
-                <!-- Tim kiem -->
-            <div class="searchh d-inline col-md-3 mr-5">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Nội dung cần tìm.." aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Tìm</button>
-            </div>
-            
-        </div>
+
+        <?php
+            include "head.php"
+        ?>
+
         <div class="">
             <img class="img-fluid mx-auto d-block" src="../img/logoto.jpg" alt="">
         </div>
@@ -45,7 +25,6 @@
 
             $conn = new PDO("mysql:host = localhost;dbname=BTTH01_CSE485", "root", "Qqfkg2003@");
                                                     
-
             $sql = "select * from tagia join baiviet on tagia.ma_tgia = baiviet.ma_tgia;";
             $list_sql = $conn->prepare($sql);
             $list_sql->execute();
@@ -70,14 +49,10 @@
         
 
 
+        <?php
+            include "floor.php"
+        ?>
 
-        <div class="container">
-            <div class="row">
-            <div class="col-md-12 floor">
-                <h3 class="text-center bg-secondary p-3" > TLU'S MUSIC GARDEN</h3>
-            </div>
-            </div>
-        </div>
 
     </div>
 
