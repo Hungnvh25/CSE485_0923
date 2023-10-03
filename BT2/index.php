@@ -129,20 +129,31 @@
                                         // Truy vấn dữ liệu từ bảng users
                                         $sql = "SELECT * FROM users LIMIT $perPage OFFSET $offset";
                                         $result = mysqli_query($conn, $sql);
+
+                                        $countSql = "SELECT COUNT(*) AS total FROM users";
+                                        $countResult = mysqli_query($conn, $countSql);
+                                        $countRow = mysqli_fetch_assoc($countResult);
                                         
                                         // Lặp qua dữ liệu và hiển thị trong bảng
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['id'] . "</td>";
-                                            echo "<td>" . $row['username'] . "</td>";
-                                            echo "<td>" . $row['email'] . "</td>";
-                                            echo "<td>" . $row['registration_date'] . "</td>";
-                                            echo "<td><i class='bi bi-record-fill text-warning '></i></td>";
-                                            echo "<td><a href=''><i class='bi bi-shield-shaded'></i></a></td>";
-                                            echo "<td><a href='Edit.php?Id={$row['id']}'><i class='bi bi-pen'></i></a></td>";
-                                            echo "<td><a href='?ID={$row['id']}'><i class='bi bi-trash3'></i></a></td>";
-                                            echo "</tr>";
+                                        $numRows = mysqli_num_rows($result);
+                                        
+                                        for($i=0;$i<$numRows;$i++){
+                                            $row = mysqli_fetch_array($result);
+                                            ?>
+                                            <tr>
+                                            <td><?=$row[0]?></td>
+                                            <td><?=$row[1]?></td>
+                                            <td><?=$row[2]?></td>
+                                            <td><?=$row[3]?></td>
+                                            <td><i class='bi bi-record-fill text-warning '></i></td>
+                                            <td><a href=''><i class='bi bi-shield-shaded'></i></a></td>
+                                            <td><a href='Edit.php?Id=<?=$row[0]?>'><i class='bi bi-pen'></i></a></td>
+                                            <td><a href='?ID=<?=$row    [0]?>'><i class='bi bi-trash3'></i></a></td>
+                                            </tr>
+                                            <?php
+
                                         }
+
                                         
                                         // Xóa dữ liệu
                                         if(isset($_GET['ID'])){
@@ -156,7 +167,7 @@
                                             
                                         }
 
-
+                                
                                         // Chỉnh sửa dữ liệu
 
                                         ?>
