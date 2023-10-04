@@ -1,8 +1,8 @@
 <?php 
- include "./Models/SinhVien.php";
-class SinhVienService{
+ include "./Models/Student.php";
+class StudentService{
    
-    private $ListSinhVien;
+    private $ListStudent;
     private $count;
 
     public function __construct(){
@@ -11,22 +11,22 @@ class SinhVienService{
 
         $list_sql = $conn->prepare($sql);
         $list_sql->execute();
-        $this->ListSinhVien = [];
+        $this->ListStudent = [];
         while ($row = $list_sql->fetch(PDO::FETCH_ASSOC) ) {
            
-            $SinhVien = new SinhVien($row['id'],$row['tenSinhVien'],$row['email'],$row['ngaySinh'],$row['idLop']);
-            $this->ListSinhVien[] = $SinhVien;
+            $Student = new Student($row['id'],$row['tenSinhVien'],$row['email'],$row['ngaySinh'],$row['idLop']);
+            $this->ListStudent[] = $Student;
 
         }
     }
 
-    public function getAllSinhVien(){
-        return $this->ListSinhVien;
+    public function getAllStudent(){
+        return $this->ListStudent;
     }
 
 
     public function getCount() {
-        $this->count = count($this->ListSinhVien);
+        $this->count = count($this->ListStudent);
         return $this->count;
     }
     

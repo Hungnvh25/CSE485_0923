@@ -1,24 +1,26 @@
 <?php 
 
-class  SinhVien{
+class  Student{
     private $id;
 
-    private $tenSinhVien;
+    private $name;
     private $email;
-    private $ngaySinh;
-    private $idLop;
+    private $date;
+    private $idclass;
 
 
-    public function __construct($id,$tenSinhVien,$email,$ngaySinh,$idLop){
+    public function __construct($id,$name,$email,$date,$idclass){
         $this->id=$id;
-        $this->tenSinhVien=$tenSinhVien;
+        $this->name=$name;
         $this->email=$email;
-        $this->ngaySinh=$ngaySinh;
-        $this->idLop=$idLop;
+        $this->date=$date;
+        $this->idclass=$idclass;
     }
 
 
     
+
+   
 
    
 
@@ -43,21 +45,21 @@ class  SinhVien{
     }
 
     /**
-     * Get the value of tenSinhVien
+     * Get the value of name
      */ 
-    public function getTenSinhVien()
+    public function getName()
     {
-        return $this->tenSinhVien;
+        return $this->name;
     }
 
     /**
-     * Set the value of tenSinhVien
+     * Set the value of name
      *
      * @return  self
      */ 
-    public function setTenSinhVien($tenSinhVien)
+    public function setName($name)
     {
-        $this->tenSinhVien = $tenSinhVien;
+        $this->name = $name;
 
         return $this;
     }
@@ -83,41 +85,41 @@ class  SinhVien{
     }
 
     /**
-     * Get the value of ngaySinh
+     * Get the value of date
      */ 
-    public function getNgaySinh()
+    public function getDate()
     {
-        return $this->ngaySinh;
+        return $this->date;
     }
 
     /**
-     * Set the value of ngaySinh
+     * Set the value of date
      *
      * @return  self
      */ 
-    public function setNgaySinh($ngaySinh)
+    public function setDate($date)
     {
-        $this->ngaySinh = $ngaySinh;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get the value of idLop
+     * Get the value of idclass
      */ 
-    public function getIdLop()
+    public function getIdclass()
     {
-        return $this->idLop;
+        return $this->idclass;
     }
 
     /**
-     * Set the value of idLop
+     * Set the value of idclass
      *
      * @return  self
      */ 
-    public function setIdLop($idLop)
+    public function setIdclass($idclass)
     {
-        $this->idLop = $idLop;
+        $this->idclass = $idclass;
 
         return $this;
     }

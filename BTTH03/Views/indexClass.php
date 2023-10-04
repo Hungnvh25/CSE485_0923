@@ -22,10 +22,10 @@
                         <img src="../imge" alt="">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Sinh viên</a>
+                        <a class="nav-link active" aria-current="page" href="/index.php">Student</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?c=Lop">Lớp</a>
+                        <a class="nav-link" href="/index.php?c=Class">Class</a>
                     </li>
                 </ul>
             </div>
@@ -63,11 +63,11 @@
             <div class="col-md-10">
                 <div class="row align-items-center">
                     <div class="form-group col-md-3">
-                        <input type="email" class="form-control" id="email" placeholder="Nhập email">
+                        <input type="email" class="form-control" id="email" placeholder="Email">
                     </div>
                     
                     <div class="form-group col-md-3">
-                        <input type="number" class="form-control" id="number" placeholder="Nhập số">
+                        <input type="number" class="form-control" id="number" placeholder="Number">
                     </div>
                     
                     <div class="form-group col-md-3">
@@ -76,22 +76,20 @@
                                 for($i=1;$i<10;$i++)
                                 {
                                 
-                                    echo "<option value='option1'>Lựa chọn " .$i. "</option>";
+                                    echo "<option value='option1'>Select " .$i. "</option>";
                                 }
                             ?>
 
                         </select>
                     </div>
 
-                    <a href="Views/add.php" class="form-group col-md-1 btn btn-dark">add</a>
+                    <a href="/Views/add_Class.php" class="form-group col-md-1 btn btn-dark">add</a>
                 </div>
                 <table class="table">
                     <thead>
                         <tr>
                         <th scope="col">id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Class</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
 
@@ -104,13 +102,30 @@
                                 ?>
                             <tr>
                                 <th scope="row"><?=$li->getId();?></th>
-                                <td><?=$li->getTenSinhVien();?></td>
-                                <td><?=$li->getEmail();?></td>
-                                <td><?=$li->getNgaySinh();?></td>
-                                <td><a href="edit_category.php?Id=<?=$row['ma_tloai']?>"><i class='bi bi-pen'></i></a></td>
-                                <td><a href="./Views/delete.php?Id=<?=$li->getId()?>"><i class='bi bi-trash3' ></i></a></td>
+                                <td><?=$li->getTenLop();?></td>
+                                <td><a href="/Views/Edit_Class.php?Id=<?=$li->getId()?>"><i class='bi bi-pen'></i></a></td>
+                                <td><a data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class='bi bi-trash3' ></i></a></td>
                             </tr>
 
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">  
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        delete id <?=$li->getId()?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a href="/Views/delete_Class.php?Id=<?=$li->getId()?>"  class="btn btn-primary">Delete</a>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                
 
                                 <?php
                             }
@@ -130,6 +145,7 @@
 
 
 
+    <script src='/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js'></script>
 </body>
 </html>
 
@@ -137,8 +153,3 @@
 
 
 
-
-<div class="container">
-
-
-    </div>

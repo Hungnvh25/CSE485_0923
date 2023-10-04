@@ -7,7 +7,8 @@
         $list_sql = $conn->prepare($sql);
         $list_sql->execute();
         
-        echo 'Thanh cong';
+        
+        header('location:/index.php');
     }
 
 

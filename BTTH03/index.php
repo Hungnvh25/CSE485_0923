@@ -1,10 +1,10 @@
 <?php 
 
-include "./Controllers/SinhVienCotroller.php";
-include "./Controllers/LopCotroller.php";
+include "./Controllers/StudentCotroller.php";
+include "./Controllers/ClassCotroller.php";
 
-$controller = isset($_GET['c'])?$_GET['c']:'SinhVien';
+$controller = isset($_GET['c'])?$_GET['c']:'Student';
 $past = $controller . "Cotroller";
-$pp = new $past;
+$pp = new $past();
 
 $pp->index();

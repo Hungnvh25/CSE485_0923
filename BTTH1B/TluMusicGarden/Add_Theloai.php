@@ -42,7 +42,7 @@
         </div>
         <div class="container">
             <div class="row ">
-            <form action="<?php echo $_SERVER['PHP_SELF'];?>">
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>">  
                 <h3 class = "text-center">Thêm mới thể loại</h3>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">tên thể loại</span>

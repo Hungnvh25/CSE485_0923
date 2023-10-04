@@ -1,6 +1,8 @@
 <?php 
 
-class Lop{
+
+
+class Class_{
     private $id;
     private $tenLop;
  

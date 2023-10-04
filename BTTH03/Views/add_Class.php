@@ -22,10 +22,10 @@
                         <img src="../imge" alt="">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Sinh Viên</a>
+                        <a class="nav-link active" aria-current="page" href="/index.php">Student</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?c=Lop">Lớp học</a>
+                        <a class="nav-link" href="/index.php?c=Class">Class</a>
                     </li>
                 </ul>
             </div>
@@ -61,64 +61,59 @@
             </div>
 
             <div class="col-md-10">
-                <div class="row align-items-center">
-                    <div class="form-group col-md-3">
-                        <input type="email" class="form-control" id="email" placeholder="Nhập email">
-                    </div>
-                    
-                    <div class="form-group col-md-3">
-                        <input type="number" class="form-control" id="number" placeholder="Nhập số">
-                    </div>
-                    
-                    <div class="form-group col-md-3">
-                        <select class="form-control" id="select">
-                            <?php
-                                for($i=1;$i<10;$i++)
-                                {
-                                
-                                    echo "<option value='option1'>Lựa chọn " .$i. "</option>";
-                                }
-                            ?>
+                <div class="container">
+                    <div class="row ">
+                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                            <h3 class = "text-center">Thêm mới Sinh Viên</h3>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Name Class</span>
+                                <input type="text" class="form-control" name = 'name'>
+                            </div>
 
-                        </select>
-                    </div>
-
-                    <a href="#" class="form-group col-md-1 btn btn-dark">add</a>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Lop</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
+                            <a href="#"><button type="submit" class="btn btn-warning mt-2 ">Thêm</button></a>
+                            <a class="btn btn-warning mt-2" href="/index.php?c=Class">Quay lại</a>
                             
-                            foreach($Listt as $li){
-                                ?>
-                            <tr>
-                                <th scope="row"><?=$li->getId();?></th>
-                                <td><?=$li->getTenLop();?></td>
-                                <td><a href="edit_category.php?Id=<?=$row['ma_tloai']?>"><i class='bi bi-pen'></i></a></td>
-                                <td><a data-bs-toggle='modal' data-bs-target="#<?=$row['ma_tloai']?>"><i class='bi bi-trash3' ></i></a></td>
-                            </tr>
-                                <?php
-                            }
-
-                        ?>
-
-                    </tbody>
-                </table>
-
-
+                            
+                        </form>
+                    </div>
+                </div>
             </div>
 
-            
-
         </div>    
+
+        <?php
+                if(isset($_POST['name'])){
+                    $name = $_POST['name'];
+                  
+
+
+                    $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
+
+                    
+                    $sql = "insert into Lop (tenLop) values ('$name');";  
+                              
+                    $list_sql = $conn->prepare($sql);
+                    $list_sql->execute();
+                    
+
+                    
+                 
+                    if($list_sql->rowCount()>0){
+                        echo "<p class='text-center'>Thanh Cong</p>";
+                    }
+                    else{
+                        echo "<p class='text-center'>Lỗi gì đó</p>";
+                    }
+
+
+                }
+
+                if(isset($_GET['err'])){
+                    echo "<p class='text-center'>Mật khẩu không Trùng </p>";
+                }
+
+                
+            ?> 
     </div>
 
 
