@@ -23,9 +23,20 @@ class ClassService{
         return $this->ListClass;
     }
 
-    public function getCount() {
-        $count = count($this->ListClass);
-        return $this->count;
+    public function delete_Class($Id){
+        
+
+        $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
+        $sql = "DELETE FROM Lop WHERE id = $Id;";
+
+        try {
+            $list_sql = $conn->prepare($sql);
+            $list_sql->execute();
+        } catch (Exception) {
+            echo "<p class='text-center'>Thanh Cong</p>";
+        }
+        header('location:/index.php?c=Class');
     }
+        
 
 }

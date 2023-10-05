@@ -25,10 +25,21 @@ class StudentService{
     }
 
 
-    public function getCount() {
-        $this->count = count($this->ListStudent);
-        return $this->count;
+    public function delete_Student($Id){
+    
+
+        $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
+        $sql = "DELETE FROM SinhVien WHERE id = $Id;";
+
+        $list_sql = $conn->prepare($sql);
+        $list_sql->execute();
+        
+        
+        header('location:/index.php');
+
+
     }
     
+
 
 }

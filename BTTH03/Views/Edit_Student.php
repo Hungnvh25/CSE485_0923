@@ -81,7 +81,7 @@
                             <h3 class = "text-center">Edit Student</h3>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">ID</span>
-                                <input type="text" class="form-control" name = 'id' value = "<?=isset($row['id'])?$row['id']:''?>" readonly>
+                                <input type="text" class="form-control" name = 'id' value = "<?=isset($row['id'])?$row['id']:''?>" readonly> 
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Name</span>
