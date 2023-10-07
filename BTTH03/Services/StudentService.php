@@ -35,11 +35,52 @@ class StudentService{
         $list_sql->execute();
         
         
-        header('location:/index.php');
+       
 
 
     }
+
+    public function add_Student($name,$email,$date,$idclass){
+
+
+        $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
+
+            
+        $sql = "insert into SinhVien (tenSinhVien, email, ngaySinh, idLop) values ('$name','$email', '$date',$idclass);";  
+                  
+        $list_sql = $conn->prepare($sql);
+        $list_sql->execute();
+        
+
+ 
+
+    }
+
+    public function getIDStudent($Id){
+
+
+        $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
+        $sql = "select * from SinhVien where id = '$Id';";
+
+        $list_sql = $conn->prepare($sql);
+        $list_sql->execute();
+        
+        $row = $list_sql->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    public function edit_Student($name,$email,$ngaySinh,$idLop,$id){
+
+        $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
+        $sql = "UPDATE sinhvien SET tenSinhVien = '$name' ,email ='$email' ,ngaySinh = '$ngaySinh', idLop = $idLop  WHERE id = $id ;";
+
+        $list_sql = $conn->prepare($sql);
+        $list_sql->execute();
+        
+        
+    }
+
     
-
-
+    
 }

@@ -61,23 +61,10 @@
             </div>
 
             <div class="col-md-10">
-                <?php
-                    if(isset($_GET['Id'])){
-                        $Id = $_GET['Id'];
-                        $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
-                        $sql = "select * from Lop where id = '$Id';";
-            
-                        $list_sql = $conn->prepare($sql);
-                        $list_sql->execute();
-                        
-                        $row = $list_sql->fetch(PDO::FETCH_ASSOC);
-
-                    }
-                ?>
 
                 <div class="container">
                     <div class="row ">
-                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">
+                        <form action="/index.php?c=Class&f=edit" method="POST">
                             <h3 class = "text-center">Edit Class</h3>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">ID</span>
@@ -95,25 +82,6 @@
                     </div>
                 </div>
 
- 
-                <?php
-                if(isset($_GET['id'])&isset($_GET['tenLop'])){
-                    $id = $_GET['id'];
-                    $tenLop = $_GET['tenLop'];
-
-                    $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
-                    $sql = "UPDATE Lop SET tenLop = '$tenLop'  WHERE id = $id ;";
-        
-                    $list_sql = $conn->prepare($sql);
-                    $list_sql->execute();
-
-                    echo "<p class='text-center'>Thanh Cong</p>";
-                }
-
-
-
-
-            ?>
             </div>
 
         </div>    

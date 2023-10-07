@@ -112,17 +112,36 @@
                                 <td><?=$li->getEmail();?></td>
                                 <td><?=$li->getDate();?></td>
                                 <td><?=$li->getIdclass();?></td>
-                                <td><a href="/Views/Edit_Student.php?Id=<?=$li->getId()?>"><i class='bi bi-pen'></i></a></td>
-                                <td><a href="/index.php?c=Student&f=delete&Id=<?=$li->getId()?>"  ><i class='bi bi-trash3' ></i> </a></td>
+                                <td><a href="/index.php?c=Student&f=idStudent&Id=<?=$li->getId()?>"><i class='bi bi-pen'></i></a></td>
+                                <td><a data-bs-toggle="modal" data-bs-target="#id<?= $li->getId() ?>"  ><i class='bi bi-trash3' ></i> </a></td>
                             </tr>
 
+                                <!-- Modal -->
+                            <div class="modal fade" id="id<?= $li->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure delete student have id: <?= $li->getId() ?> ?
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a class="btn btn-primary"  href="/index.php?c=Student&f=delete&Id=<?=$li->getId()?>">Delete</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                                 <?php
                             }
 
 
 
-                            
                         ?>
+
+                        
 
                     </tbody>
                 </table>
@@ -134,7 +153,14 @@
 
         </div>    
     </div>
-
+         <?php 
+         
+         if(isset($_GET['err'])){
+            ?>
+                <h4 class = "text-center"><?=$_GET['err']?> </h4>
+            <?php
+            }
+         ?>                   
     <script src='/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js'></script>
 </body>
 </html>

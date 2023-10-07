@@ -63,7 +63,7 @@
             <div class="col-md-10">
                 <div class="container">
                     <div class="row ">
-                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                        <form action="/index.php?c=Class&f=add" method="post">
                             <h3 class = "text-center">Thêm mới Sinh Viên</h3>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Name Class</span>
@@ -82,35 +82,7 @@
         </div>    
 
         <?php
-                if(isset($_POST['name'])){
-                    $name = $_POST['name'];
-                  
 
-
-                    $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
-
-                    
-                    $sql = "insert into Lop (tenLop) values ('$name');";  
-                              
-                    $list_sql = $conn->prepare($sql);
-                    $list_sql->execute();
-                    
-
-                    
-                 
-                    if($list_sql->rowCount()>0){
-                        echo "<p class='text-center'>Thanh Cong</p>";
-                    }
-                    else{
-                        echo "<p class='text-center'>Lỗi gì đó</p>";
-                    }
-
-
-                }
-
-                if(isset($_GET['err'])){
-                    echo "<p class='text-center'>Mật khẩu không Trùng </p>";
-                }
 
                 
             ?> 

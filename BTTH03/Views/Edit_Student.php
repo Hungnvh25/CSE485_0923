@@ -61,23 +61,11 @@
             </div>
 
             <div class="col-md-10">
-                <?php
-                    if(isset($_GET['Id'])){
-                        $Id = $_GET['Id'];
-                        $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
-                        $sql = "select * from SinhVien where id = '$Id';";
-            
-                        $list_sql = $conn->prepare($sql);
-                        $list_sql->execute();
-                        
-                        $row = $list_sql->fetch(PDO::FETCH_ASSOC);
 
-                    }
-                ?>
 
                 <div class="container">
                     <div class="row ">
-                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">
+                        <form action="/index.php?c=Student&f=edit" method="POST">
                             <h3 class = "text-center">Edit Student</h3>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">ID</span>
@@ -99,7 +87,7 @@
                                 <span class="input-group-text" id="basic-addon1">ID Class</span>
                                 <input type="text" class="form-control" name = 'idclass' value = "<?=isset($row['idLop'])?$row['idLop']:''?>"> 
                             </div>
-                            <a><button type="submit" class="btn btn-warning mt-2 ">Lưu</button></a>
+                            <button  class="btn btn-warning mt-2 ">Lưu</button>
                             <a class="btn btn-warning mt-2" href="/index.php">Quay lại</a>
                                     
                                     
@@ -107,28 +95,6 @@
                     </div>
                 </div>
 
- 
-                <?php
-                if(isset($_GET['id'])&isset($_GET['name'])&isset($_GET['email'])&isset($_GET['ngaySinh'])&isset($_GET['idclass'])){
-                    $id = $_GET['id'];
-                    $name = $_GET['name'];
-                    $email = $_GET['email'];
-                    $ngaySinh = $_GET['ngaySinh'];
-                    $idLop = $_GET['idclass'];
-                
-                    $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
-                    $sql = "UPDATE sinhvien SET tenSinhVien = '$name' ,email ='$email' ,ngaySinh = '$ngaySinh', idLop = $idLop  WHERE id = $id ;";
-        
-                    $list_sql = $conn->prepare($sql);
-                    $list_sql->execute();
-
-                    echo "<p class='text-center'>Thanh Cong</p>";
-                }
-
-
-
-
-            ?>
             </div>
 
         </div>    

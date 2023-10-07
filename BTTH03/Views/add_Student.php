@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,10 +61,11 @@
                 </ul>
             </div>
 
+
             <div class="col-md-10">
                 <div class="container">
                     <div class="row ">
-                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                        <form action="/index.php?c=Student&f=add" method="POST">
                             <h3 class = "text-center">Thêm mới Sinh Viên</h3>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Name</span>
@@ -79,7 +81,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">ID Class</span>
-                                <input type="text" class="form-control" name = 'idclass'>
+                                <input type="number" class="form-control" name = 'idclass'>
                             </div>
                             <a href="#"><button type="submit" class="btn btn-warning mt-2 ">Thêm</button></a>
                             <a class="btn btn-warning mt-2" href="/index.php">Quay lại</a>
@@ -92,43 +94,7 @@
 
         </div>    
 
-        <?php
-                if(isset($_POST['name'])&isset($_POST['email'])&isset($_POST['date'])&isset($_POST['idclass'])){
-                    $name = $_POST['name'];
-                    $email = $_POST['email'];
-                    $date = $_POST['date'];
-                    $idclass = $_POST['idclass'];
-                    
-                  
 
-
-                    $conn = new PDO("mysql:host = localhost;dbname=QuanLySinhVien", "root", "Qqfkg2003@");
-
-                    
-                    $sql = "insert into SinhVien (tenSinhVien, email, ngaySinh, idLop) values ('$name','$email', '$date',$idclass);";  
-                              
-                    $list_sql = $conn->prepare($sql);
-                    $list_sql->execute();
-                    
-
-                    
-                 
-                    if($list_sql->rowCount()>0){
-                        echo "<p class='text-center'>Thanh Cong</p>";
-                    }
-                    else{
-                        echo "<p class='text-center'>Lỗi gì đó</p>";
-                    }
-
-
-                }
-
-                if(isset($_GET['err'])){
-                    echo "<p class='text-center'>Mật khẩu không Trùng </p>";
-                }
-
-                
-            ?> 
     </div>
 
 
