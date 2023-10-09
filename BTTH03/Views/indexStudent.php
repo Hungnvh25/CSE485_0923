@@ -100,7 +100,6 @@
 
                         </tr>
                     </thead>
-                    <?php $contr = new StudentCotroller();?>
                     <tbody>
                         <?php 
                             

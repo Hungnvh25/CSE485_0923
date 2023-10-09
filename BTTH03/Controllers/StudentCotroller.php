@@ -1,5 +1,5 @@
 <?php 
-include "./Services/StudentService.php";
+include APP_ROOT . "/Services/StudentService.php";
 class StudentCotroller{
 
     
@@ -9,7 +9,7 @@ class StudentCotroller{
         $List = new StudentService();
         $Listt=  $List->getAllStudent();
 
-        include "./Views/indexStudent.php";
+        include APP_ROOT . "/Views/indexStudent.php";
     }
 
     public function delete(){
@@ -39,7 +39,7 @@ class StudentCotroller{
             $List = new StudentService();
             $row =  $List->getIDStudent($Id);
 
-            include "./Views/Edit_Student.php";
+            include APP_ROOT . "/Views/Edit_Student.php";
 
         }
     }
@@ -56,7 +56,7 @@ class StudentCotroller{
             
             $Listr = new StudentService();
             $Listr->edit_Student($name,$email,$ngaySinh,$idLop,$id);
-            header('location:/index.php?err= successfully repaired');
+            header('location:/index.php??err= successfully repaired');
         }
     }
 }

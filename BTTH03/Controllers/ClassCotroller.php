@@ -1,5 +1,5 @@
 <?php 
-include "./Services/ClassService.php";
+include APP_ROOT . "/Services/ClassService.php";
 
 class ClassCotroller{
 
@@ -9,13 +9,13 @@ class ClassCotroller{
         $list = new ClassService();
         $Listt = $list->getAllClass();
 
-        include "./Views/indexClass.php";
+        include APP_ROOT . "/Views/indexClass.php";
     }
     public function delete(){
         $Id = $_GET['Id'];
         $List = new ClassService();
         $List->delete_Class($Id);
-        header('location:/index.php?c=Class?err= deleted successfully');
+        header('location:/index.php?c=Class&err= deleted successfully');
     }
 
     public function add(){
@@ -24,7 +24,7 @@ class ClassCotroller{
  
             $List = new ClassService();
             $List->add_Class($name);
-            header('location:/index.php?c=Class?err= amore success');
+            header('location:/index.php?c=Class&err= amore success');
         }
     }
 
@@ -36,7 +36,7 @@ class ClassCotroller{
             $List = new ClassService();
             $row =  $List->idClass($Id);
 
-           include "./Views/Edit_Class.php";
+           include APP_ROOT . "/Views/Edit_Class.php";
 
         }
     }
@@ -49,7 +49,7 @@ class ClassCotroller{
 
             $List = new ClassService();
             $List->edit_Class($tenLop,$id);
-            header('location:/index.php?c=Class?err= successfully repaired');
+            header('location:/index.php?c=Class&err= successfully repaired');
         }
     }
 

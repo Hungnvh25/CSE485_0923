@@ -64,7 +64,7 @@
                 <div class="container">
                     <div class="row ">
                         <form action="/index.php?c=Class&f=add" method="post">
-                            <h3 class = "text-center">Thêm mới Sinh Viên</h3>
+                            <h3 class = "text-center">Add Class</h3>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Name Class</span>
                                 <input type="text" class="form-control" name = 'name'>

@@ -1,5 +1,5 @@
 <?php 
- include "./Models/Class.php";
+ include APP_ROOT . "/Models/Class.php";
 class ClassService{
    
     private $ListClass;
