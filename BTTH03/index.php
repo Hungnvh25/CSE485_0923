@@ -3,8 +3,6 @@
 require_once "./config/config.php";
 
 include  APP_ROOT . "/Controllers/StudentCotroller.php";
-
-
 include APP_ROOT . "/Controllers/ClassCotroller.php";
 
 
