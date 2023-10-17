@@ -5,11 +5,11 @@ class StudentCotroller{
     
     public function index(){
         
-
+       
         $List = new StudentService();
         $Listt=  $List->getAllStudent();
-
         include APP_ROOT . "/Views/indexStudent.php";
+       
     }
 
     public function delete(){

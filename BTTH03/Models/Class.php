@@ -14,9 +14,6 @@ class Class_{
     }
 
     
-    
-
-
     /**
      * Get the value of id
      */ 
@@ -25,11 +22,13 @@ class Class_{
         return $this->id;
     }
 
+    
     /**
      * Set the value of id
      *
      * @return  self
      */ 
+
     public function setId($id)
     {
         $this->id = $id;

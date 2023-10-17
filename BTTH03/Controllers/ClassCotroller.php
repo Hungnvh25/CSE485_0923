@@ -11,6 +11,7 @@ class ClassCotroller{
 
         include APP_ROOT . "/Views/indexClass.php";
     }
+
     public function delete(){
         $Id = $_GET['Id'];
         $List = new ClassService();
@@ -31,8 +32,6 @@ class ClassCotroller{
     public function idClass(){
         if(isset($_GET['Id'])){
             $Id = $_GET['Id'];
-
-             
             $List = new ClassService();
             $row =  $List->idClass($Id);
 
